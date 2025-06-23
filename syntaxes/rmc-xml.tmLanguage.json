@@ -1,0 +1,163 @@
+{
+  "name": "RMC XML",
+  "scopeName": "text.xml.rmc",
+  "fileTypes": ["rmc.xml"],
+  "patterns": [
+    {
+      "include": "#xml-processing"
+    },
+    {
+      "include": "#xml-declaration"
+    },
+    {
+      "include": "#rmc-elements"
+    },
+    {
+      "include": "#xml-comment"
+    }
+  ],
+  "repository": {
+    "xml-processing": {
+      "name": "meta.tag.preprocessor.xml",
+      "begin": "(<\\?)\\s*([-_a-zA-Z0-9]+)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.xml" },
+        "2": { "name": "entity.name.tag.xml" }
+      },
+      "end": "(\\?>)",
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.xml" }
+      },
+      "patterns": [
+        {
+          "include": "#xml-attribute"
+        }
+      ]
+    },
+    "xml-declaration": {
+      "name": "meta.tag.sgml.doctype.xml",
+      "begin": "(<!)([A-Z]+)",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.xml" },
+        "2": { "name": "keyword.other.doctype.xml" }
+      },
+      "end": "(>)",
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.xml" }
+      }
+    },
+    "rmc-elements": {
+      "patterns": [
+        {
+          "include": "#rmc-root-elements"
+        },
+        {
+          "include": "#rmc-message-elements"
+        },
+        {
+          "include": "#rmc-action-elements"
+        },
+        {
+          "include": "#xml-element"
+        }
+      ]
+    },
+    "rmc-root-elements": {
+      "name": "meta.tag.xml",
+      "begin": "(</?)(EtaRsccat|ZetaMessage)\\b",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.xml" },
+        "2": { "name": "entity.name.tag.root.rmc.xml" }
+      },
+      "end": "(/?>)",
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.xml" }
+      },
+      "patterns": [
+        {
+          "include": "#xml-attribute"
+        }
+      ]
+    },
+    "rmc-message-elements": {
+      "name": "meta.tag.xml",
+      "begin": "(</?)(BetaEntry|LambdaActions|ThetaActions)\\b",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.xml" },
+        "2": { "name": "entity.name.tag.message.rmc.xml" }
+      },
+      "end": "(/?>)",
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.xml" }
+      },
+      "patterns": [
+        {
+          "include": "#xml-attribute"
+        }
+      ]
+    },
+    "rmc-action-elements": {
+      "name": "meta.tag.xml",
+      "begin": "(</?)(DeltaAction|OmegaA|SigmaDiag)\\b",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.xml" },
+        "2": { "name": "entity.name.tag.action.rmc.xml" }
+      },
+      "end": "(/?>)",
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.xml" }
+      },
+      "patterns": [
+        {
+          "include": "#xml-attribute"
+        }
+      ]
+    },
+    "xml-element": {
+      "name": "meta.tag.xml",
+      "begin": "(</?)(\\w+)\\b",
+      "beginCaptures": {
+        "1": { "name": "punctuation.definition.tag.xml" },
+        "2": { "name": "entity.name.tag.xml" }
+      },
+      "end": "(/?>)",
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.xml" }
+      },
+      "patterns": [
+        {
+          "include": "#xml-attribute"
+        }
+      ]
+    },
+    "xml-attribute": {
+      "patterns": [
+        {
+          "name": "meta.attribute-with-value.xml",
+          "begin": "\\b([a-zA-Z_:][-a-zA-Z0-9_:.]*)\\s*(=)\\s*([\"'])",
+          "beginCaptures": {
+            "1": { "name": "entity.other.attribute-name.xml" },
+            "2": { "name": "punctuation.separator.key-value.xml" },
+            "3": { "name": "punctuation.definition.string.begin.xml" }
+          },
+          "end": "\\3",
+          "endCaptures": {
+            "0": { "name": "punctuation.definition.string.end.xml" }
+          },
+          "contentName": "string.quoted.xml"
+        }
+      ]
+    },
+    "xml-comment": {
+      "name": "comment.block.xml",
+      "begin": "<!--",
+      "end": "-->",
+      "beginCaptures": {
+        "0": { "name": "punctuation.definition.comment.xml" }
+      },
+      "endCaptures": {
+        "0": { "name": "punctuation.definition.comment.xml" }
+      }
+    }
+  }
+}

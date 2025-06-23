@@ -1,0 +1,191 @@
+{
+  "name": "RMC XML",
+  "scopeName": "text.xml.rmc",
+  "fileTypes": ["rmc.xml", "rmc"],
+  "patterns": [
+    {
+      "include": "#xml-processing-instruction"
+    },
+    {
+      "include": "#xml-declaration"
+    },
+    {
+      "include": "#xml-comment"
+    },
+    {
+      "include": "#rmc-elements"
+    },
+    {
+      "include": "#xml-cdata"
+    }
+  ],
+  "repository": {
+    "xml-processing-instruction": {
+      "name": "meta.tag.preprocessor.xml",
+      "begin": "(<\\?)\\s*([-_a-zA-Z0-9]+)",
+      "end": "(\\?>)",
+      "patterns": [
+        {
+          "name": "entity.other.attribute-name.xml",
+          "match": " ([a-zA-Z-]+)"
+        },
+        {
+          "include": "#xml-double-quoted-string"
+        },
+        {
+          "include": "#xml-single-quoted-string"
+        }
+      ]
+    },
+    "xml-declaration": {
+      "name": "meta.tag.sgml.xml",
+      "begin": "(<!)([A-Z]+)",
+      "end": "(>)",
+      "patterns": [
+        {
+          "include": "#xml-double-quoted-string"
+        },
+        {
+          "include": "#xml-single-quoted-string"
+        }
+      ]
+    },
+    "xml-comment": {
+      "name": "comment.block.xml",
+      "begin": "<!--",
+      "end": "-->"
+    },
+    "xml-cdata": {
+      "name": "string.unquoted.cdata.xml",
+      "begin": "<!\\[CDATA\\[",
+      "end": "\\]\\]>"
+    },
+    "rmc-elements": {
+      "patterns": [
+        {
+          "name": "meta.tag.rmc.root",
+          "begin": "(</?)(EtaRsccat)\\b",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.xml" },
+            "2": { "name": "entity.name.tag.rmc.root" }
+          },
+          "end": "(/?>)",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.tag.xml" }
+          },
+          "patterns": [
+            { "include": "#rmc-attributes" }
+          ]
+        },
+        {
+          "name": "meta.tag.rmc.message",
+          "begin": "(</?)(ZetaMessage|BetaEntry)\\b",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.xml" },
+            "2": { "name": "entity.name.tag.rmc.message" }
+          },
+          "end": "(/?>)",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.tag.xml" }
+          },
+          "patterns": [
+            { "include": "#rmc-attributes" }
+          ]
+        },
+        {
+          "name": "meta.tag.rmc.action",
+          "begin": "(</?)(LambdaActions|DeltaAction|ThetaActions)\\b",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.xml" },
+            "2": { "name": "entity.name.tag.rmc.action" }
+          },
+          "end": "(/?>)",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.tag.xml" }
+          },
+          "patterns": [
+            { "include": "#rmc-attributes" }
+          ]
+        },
+        {
+          "name": "meta.tag.rmc.link",
+          "begin": "(</?)(OmegaA|SigmaDiag)\\b",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.xml" },
+            "2": { "name": "entity.name.tag.rmc.link" }
+          },
+          "end": "(/?>)",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.tag.xml" }
+          },
+          "patterns": [
+            { "include": "#rmc-attributes" }
+          ]
+        },
+        {
+          "name": "meta.tag.rmc.generic",
+          "begin": "(</?)(\\w+)\\b",
+          "beginCaptures": {
+            "1": { "name": "punctuation.definition.tag.xml" },
+            "2": { "name": "entity.name.tag.rmc.generic" }
+          },
+          "end": "(/?>)",
+          "endCaptures": {
+            "1": { "name": "punctuation.definition.tag.xml" }
+          },
+          "patterns": [
+            { "include": "#rmc-attributes" }
+          ]
+        }
+      ]
+    },
+    "rmc-attributes": {
+      "patterns": [
+        {
+          "name": "meta.attribute.rmc.required",
+          "match": "\\b(PsiKey|UpsilonProduct|RhoHref|PhiObjparam|ChiObjui|MuType)\\s*(=)\\s*",
+          "captures": {
+            "1": { "name": "entity.other.attribute-name.rmc.required" },
+            "2": { "name": "punctuation.separator.key-value.xml" }
+          }
+        },
+        {
+          "name": "meta.attribute.rmc.optional",
+          "match": "\\b([a-zA-Z][a-zA-Z0-9_]*)\\s*(=)\\s*",
+          "captures": {
+            "1": { "name": "entity.other.attribute-name.rmc.optional" },
+            "2": { "name": "punctuation.separator.key-value.xml" }
+          }
+        },
+        {
+          "include": "#xml-double-quoted-string"
+        },
+        {
+          "include": "#xml-single-quoted-string"
+        }
+      ]
+    },
+    "xml-double-quoted-string": {
+      "name": "string.quoted.double.xml",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "name": "constant.character.entity.xml",
+          "match": "&[a-zA-Z0-9]+;"
+        }
+      ]
+    },
+    "xml-single-quoted-string": {
+      "name": "string.quoted.single.xml",
+      "begin": "'",
+      "end": "'",
+      "patterns": [
+        {
+          "name": "constant.character.entity.xml",
+          "match": "&[a-zA-Z0-9]+;"
+        }
+      ]
+    }
+  }
+}

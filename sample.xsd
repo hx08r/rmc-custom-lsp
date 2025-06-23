@@ -1,0 +1,330 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+
+    <xsd:simpleType name="AlphaString">
+        <xsd:restriction base="xsd:string">
+            <xsd:minLength value="0"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+    <xsd:complexType name="BetaEType" mixed="true">
+        <xsd:sequence>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="OmegaA" type="GammaHLType" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element name="SigmaDiag" type="DeltaDiagType" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:choice>
+            <xsd:element name="LambdaActions" type="ThetaActionsType" minOccurs="0" maxOccurs="1"/>
+            <xsd:element name="RandomElement1" type="xsd:string" minOccurs="0" maxOccurs="1"/> <!-- Random element -->
+        </xsd:sequence>
+        <xsd:attribute name="PsiKey" use="required">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:pattern value="([a-zA-Z_][a-zA-Z0-9_]*)"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="PhiTranslate" type="xsd:boolean" default="true"/>
+        <xsd:attribute name="MuCdata" type="xsd:boolean" default="false"/>
+        <xsd:attribute name="NuNote" type="xsd:string"/>
+        <xsd:attribute name="XiContext">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="error" />
+                    <xsd:enumeration value="warning" />
+                    <xsd:enumeration value="diagnostic" />
+                    <xsd:enumeration value="uistring" />
+                    <xsd:enumeration value="parameter" />
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="RandomAttr1" type="xsd:int" use="optional"/> <!-- Random attribute -->
+    </xsd:complexType>
+
+    <xsd:complexType name="ZetaMessageType">
+        <xsd:sequence>
+            <xsd:element name="BetaEntry" type="BetaEType" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="EtaRsccatType">
+        <xsd:sequence>
+            <xsd:element name="ZetaMessage" type="ZetaMessageType">
+                <xsd:unique name="uniqueKeyAttributeConstraint">
+                    <xsd:selector xpath="BetaEntry"/>
+                    <xsd:field xpath="@PsiKey"/>
+                </xsd:unique>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="TauVersion" type="xsd:decimal"/>
+        <xsd:attribute name="UpsilonProduct" use="required">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:pattern value="([a-zA-Z_][a-zA-Z0-9_]*)"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="ChiLocale" type="xsd:string"/>
+        <xsd:attribute name="OmegaDecorateCxxNames" type="xsd:boolean"/>
+    </xsd:complexType>
+
+    <xsd:element name="EtaRsccat" type="EtaRsccatType"/>
+
+    <xsd:simpleType name="KappaCallbackString">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="((matlab:)?.*)"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="LambdaIdString">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="([a-zA-Z_][a-zA-Z0-9_]*):([a-zA-Z_][a-zA-Z0-9_]*):([a-zA-Z_][a-zA-Z0-9_]*)(:([a-zA-Z_][a-zA-Z0-9_]*))*"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="MuNumberField">
+        <xsd:restriction base="xsd:integer">
+            <xsd:minInclusive value="1"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="NuNumberArray">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\s*((\{\d+,number,integer\})|([1-9][0-9]*))\s*(,\s*( (\{\d+,number,integer\})|([1-9][0-9]*))\s*)*"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="XiActionIdString">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[a-zA-Z][a-zA-Z0-9_]*"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="OmicronActionIdStringArray">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="\s*((\{\d+\})|([a-zA-Z][a-zA-Z0-9_]*))\s*(,\s*((\{\d+\})|([a-zA-Z][a-zA-Z0-9_]*))\s*)*"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+       <xsd:complexType name="PiIntroType">
+        <xsd:simpleContent>
+            <xsd:extension base="AlphaString"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="GammaHLType" mixed="true">
+        <xsd:annotation>
+            <xsd:documentation>
+                Element that usually represents link to the Simulink object 
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="RhoHref" use="required"/>
+        <xsd:attribute name="SigmaFileName" use="optional"/>
+        <xsd:attribute name="TauStyle" use="optional"/>
+        <xsd:attribute name="UpsilonId" use="optional"/>
+        <xsd:attribute name="RandomAttr2" type="xsd:string" use="optional"/> <!-- Random attribute -->
+    </xsd:complexType>
+
+    <xsd:complexType name="DeltaDiagType" mixed="true">
+        <xsd:annotation>
+            <xsd:documentation>
+                Element that represents link to the various
+                Simulink related UI. It will be transformed
+                to the hotlinkType type element at the runtime. 
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:attribute name="PhiObjparam" use="required"/>
+        <xsd:attribute name="ChiObjui" use="required">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string"/>
+            </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="PsiObjname" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="RhoCommandType" mixed="true">
+        <xsd:sequence>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="OmegaA" type="GammaHLType" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element name="SigmaDiag" type="DeltaDiagType" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:choice>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="SigmaEnumType">
+        <xsd:simpleContent>
+            <xsd:extension base="AlphaString"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="TauPromptType">
+        <xsd:simpleContent>
+            <xsd:extension base="AlphaString"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+    <xsd:complexType name="UpsilonUserMsgType">
+        <xsd:simpleContent>
+            <xsd:extension base="AlphaString"/>
+        </xsd:simpleContent>
+    </xsd:complexType>
+
+    <xsd:complexType name="PhiCargType">
+        <xsd:sequence>
+            <xsd:element name="PsiTxtPrompt" type="TauPromptType" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="ChiDefCmd" type="RhoCommandType" minOccurs="0" maxOccurs="1"/>
+            <xsd:choice>
+                <xsd:element name="OmegaEnumCmd" type="RhoCommandType" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="SigmaEnum" type="SigmaEnumType" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:choice>
+            <xsd:element name="RandomElement2" type="xsd:int" minOccurs="0" maxOccurs="1"/> <!-- Random element -->
+        </xsd:sequence>
+        <xsd:attribute name="TauName" type="xsd:string"/>
+        <xsd:attribute name="UpsilonType">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="text"/>
+                    <xsd:enumeration value="menu"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="PhiTranslate" type="xsd:boolean" use="optional" default="true"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="ChiCargsType">
+        <xsd:sequence>
+            <xsd:element name="PhiCarg" type="PhiCargType" minOccurs="1" maxOccurs="2"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="PsiActionMsgArgType" mixed="true">
+        <xsd:sequence>
+            <xsd:element name="OmegaA" type="GammaHLType" minOccurs="0" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="OmegaMsgActionType">
+        <xsd:sequence>
+            <xsd:element name="BetaArg" type="PsiActionMsgArgType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="GammaId" type="LambdaIdString"/>
+    </xsd:complexType>
+
+        <xsd:complexType name="AlphaActionTxtType" mixed="true">
+        <xsd:sequence>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="OmegaA" type="GammaHLType" minOccurs="0" maxOccurs="unbounded"/>
+                <xsd:element name="SigmaDiag" type="DeltaDiagType" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:choice>
+        </xsd:sequence>
+        <xsd:attribute name="PhiTranslate" type="xsd:boolean" default="true"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="BetaParamType">
+        <xsd:sequence>
+            <xsd:element name="GammaObj" type="RhoCommandType" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="DeltaName" type="AlphaString" minOccurs="1" maxOccurs="1"/>
+            <xsd:element name="EpsilonVal" type="AlphaString" minOccurs="1" maxOccurs="1"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="GammaParamsType">
+        <xsd:sequence>
+            <xsd:element name="BetaPrm" type="BetaParamType" minOccurs="1" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="DeltaActionType" mixed="false">
+        <xsd:sequence>
+            <xsd:choice minOccurs="0" maxOccurs="1">
+                <xsd:element name="EpsilonCmd" type="RhoCommandType" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="ZetaParams" type="GammaParamsType" minOccurs="0" maxOccurs="1"/>
+            </xsd:choice>
+            <xsd:element name="EtaCargs" type="ChiCargsType" minOccurs="0" maxOccurs="1"/>
+            <xsd:choice minOccurs="0" maxOccurs="1">
+                <xsd:element name="ThetaTxt" type="AlphaActionTxtType"/>
+                <xsd:element name="IotaMsg" type="OmegaMsgActionType"/>
+            </xsd:choice>
+        </xsd:sequence>
+        <xsd:attribute name="KappaEnabled" type="xsd:boolean" use="optional" default="true"/>
+        <xsd:attribute name="LambdaId" type="XiActionIdString" use="optional"/>
+        <xsd:attribute name="MuType" use="required">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="fixit" />
+                    <xsd:enumeration value="suggestion" />
+                    <xsd:enumeration value="suppression" />
+                    <xsd:enumeration value="help" />
+                    <xsd:enumeration value="doc" />
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="NuBtn" use="optional">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="none" />
+                    <xsd:enumeration value="fix" />
+                    <xsd:enumeration value="resolve" />
+                    <xsd:enumeration value="apply" />
+                    <xsd:enumeration value="open" />
+                    <xsd:enumeration value="suppress" />
+                    <xsd:enumeration value="disable" />
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="XiRetvalue" use="optional" default="true">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="false" />
+                    <xsd:enumeration value="no" />
+                    <xsd:enumeration value="true" />
+                    <xsd:enumeration value="yes" />
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:complexType name="EpsilonMsgActionIndirectType" mixed="false">
+        <xsd:sequence>
+            <xsd:element name="BetaArg" type="PsiActionMsgArgType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="KappaEnabled" type="xsd:boolean" use="optional" default="true"/>
+        <xsd:attribute name="LambdaFromId" type="LambdaIdString"/>
+        <xsd:attribute name="MuActionIds" type="OmicronActionIdStringArray" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="ZetaActionCatalogIndirectType" mixed="false">
+        <xsd:sequence>
+            <xsd:element name="BetaArg" type="PsiActionMsgArgType" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="KappaEnabled" type="xsd:boolean" use="optional" default="true"/>
+        <xsd:attribute name="LambdaFromId" type="LambdaIdString"/>
+        <xsd:attribute name="MuIds" type="OmicronActionIdStringArray" use="optional"/>
+        <xsd:attribute name="NuId" type="LambdaIdString" use="optional"/>
+    </xsd:complexType>
+
+    <xsd:complexType name="ThetaActionsType">
+        <xsd:sequence>
+            <xsd:choice minOccurs="0" maxOccurs="unbounded">
+                <xsd:element name="DeltaAction" type="DeltaActionType" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="InsertActions" type="EpsilonMsgActionIndirectType" minOccurs="0" maxOccurs="1"/>
+                <xsd:element name="ActionCatalog" type="ZetaActionCatalogIndirectType" minOccurs="0" maxOccurs="1"/>
+            </xsd:choice>
+            <xsd:element name="RandomElement3" type="xsd:string" minOccurs="0" maxOccurs="1"/> <!-- Random element -->
+        </xsd:sequence>
+        <xsd:attribute name="XiExclusiveFixIts" use="optional" default="yes">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="yes" />
+                    <xsd:enumeration value="no" />
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+        <xsd:attribute name="KappaEnabled" type="xsd:boolean" use="optional" default="true"/>
+        <xsd:attribute name="MuOrder" use="optional">
+            <xsd:simpleType>
+                <xsd:restriction base="xsd:string">
+                    <xsd:enumeration value="block" />
+                </xsd:restriction>
+            </xsd:simpleType>
+        </xsd:attribute>
+    </xsd:complexType>
+
+    <xsd:element name="ThetaActions" type="ThetaActionsType">
+        <xsd:unique name="unique_id_constraint">
+            <xsd:selector xpath="DeltaAction"/>
+            <xsd:field xpath="@LambdaId"/>
+        </xsd:unique>
+    </xsd:element>
+</xsd:schema>
