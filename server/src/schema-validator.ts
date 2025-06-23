@@ -14,26 +14,26 @@ export class SchemaValidator {
     'ThetaTxt', 'IotaMsg', 'BetaArg', 'InsertActions', 'ActionCatalog',
     'RandomElement1', 'RandomElement2', 'RandomElement3', 'GammaParamsType',
     'AlphaActionTxtType', 'RhoCommandType', 'TauPromptType', 'UpsilonUserMsgType',
-    'PhiCargType', 'ChiCargsType', 'PsiActionMsgArgType', 'OmegaMsgActionType',
-    'BetaParamType', 'GammaParamsType', 'EpsilonMsgActionIndirectType',
-    'ZetaActionCatalogIndirectType', 'PiIntroType', 'GammaHLType', 'DeltaDiagType'
+    'PhiCargType', 'ChiCargsType', 'PsiAMsgArgumentType', 'OmegaMsgActType',
+    'BetaParamType', 'GammaParamsType', 'EpsilonSomeType',
+    'ZetaActionCatalogIndirectType', 'PiIntroType', 'GammaHLType', 'DeltaDType'
   ]);
 
   private requiredAttributes = new Map([
     ['BetaEntry', ['PsiKey']],
     ['EtaRsccat', ['UpsilonProduct']],
     ['OmegaA', ['RhoHref']],
-    ['SigmaDiag', ['PhiObjparam', 'ChiObjui']],
+    ['SigmaDiag', ['PhiObjP', 'ChiObjU']],
     ['DeltaAction', ['MuType']]
   ]);
 
   private attributeEnums = new Map([
-    ['XiContext', ['error', 'warning', 'diagnostic', 'uistring', 'parameter']],
+    ['XiContext', ['error', 'warning', 'diagnostic', 'textstring', 'paramobject']],
     ['UpsilonType', ['text', 'menu']],
-    ['MuType', ['fixit', 'suggestion', 'suppression', 'help', 'doc']],
+    ['MuType', ['fixthis', 'suggest', 'suppress', 'help', 'doc']],
     ['NuBtn', ['none', 'fix', 'resolve', 'apply', 'open', 'suppress', 'disable']],
     ['XiRetvalue', ['false', 'no', 'true', 'yes']],
-    ['XiExclusiveFixIts', ['yes', 'no']],
+    ['XiExFixThese', ['yes', 'no']],
     ['MuOrder', ['block']]
   ]);
 
@@ -113,18 +113,18 @@ export class SchemaValidator {
       });
     }
 
-    // Check SigmaDiag requires PhiObjparam and ChiObjui
+    // Check SigmaDiag requires PhiObjP and ChiObjU
     if (line.includes('<SigmaDiag')) {
-      if (!line.includes('PhiObjparam=')) {
+      if (!line.includes('PhiObjP=')) {
         errors.push({
           range: Range.create(Position.create(lineIndex, 0), Position.create(lineIndex, line.length)),
-          message: 'SigmaDiag element requires PhiObjparam attribute'
+          message: 'SigmaDiag element requires PhiObjP attribute'
         });
       }
-      if (!line.includes('ChiObjui=')) {
+      if (!line.includes('ChiObjU=')) {
         errors.push({
           range: Range.create(Position.create(lineIndex, 0), Position.create(lineIndex, line.length)),
-          message: 'SigmaDiag element requires ChiObjui attribute'
+          message: 'SigmaDiag element requires ChiObjU attribute'
         });
       }
     }

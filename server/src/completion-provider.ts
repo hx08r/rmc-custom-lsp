@@ -53,12 +53,12 @@ export class CompletionProvider {
     ['EtaRsccat', ['TauVersion', 'UpsilonProduct', 'ChiLocale', 'OmegaDecorateCxxNames']],
     ['BetaEntry', ['PsiKey', 'PhiTranslate', 'MuCdata', 'NuNote', 'XiContext', 'RandomAttr1']],
     ['OmegaA', ['RhoHref', 'SigmaFileName', 'TauStyle', 'UpsilonId', 'RandomAttr2']],
-    ['SigmaDiag', ['PhiObjparam', 'ChiObjui', 'PsiObjname']],
+    ['SigmaDiag', ['PhiObjP', 'ChiObjU', 'PsiObjN']],
     ['DeltaAction', ['KappaEnabled', 'LambdaId', 'MuType', 'NuBtn', 'XiRetvalue']],
-    ['ThetaActions', ['XiExclusiveFixIts', 'KappaEnabled', 'MuOrder']],
+    ['ThetaActions', ['XiExFixThese', 'KappaEnabled', 'MuOrder']],
     ['PhiCarg', ['TauName', 'UpsilonType', 'PhiTranslate']],
-    ['OmegaMsgActionType', ['GammaId']],
-    ['EpsilonMsgActionIndirectType', ['KappaEnabled', 'LambdaFromId', 'MuActionIds']],
+    ['OmegaMsgActType', ['GammaId']],
+    ['EpsilonSomeType', ['KappaEnabled', 'LambdaFromId', 'MuActionableIdentifiers']],
     ['ZetaActionCatalogIndirectType', ['KappaEnabled', 'LambdaFromId', 'MuIds', 'NuId']]
   ]);
 
@@ -67,18 +67,18 @@ export class CompletionProvider {
     ['EtaRsccat', ['UpsilonProduct']],
     ['BetaEntry', ['PsiKey']],
     ['OmegaA', ['RhoHref']],
-    ['SigmaDiag', ['PhiObjparam', 'ChiObjui']],
+    ['SigmaDiag', ['PhiObjP', 'ChiObjU']],
     ['DeltaAction', ['MuType']]
   ]);
 
   // Define attribute value enums
   private attributeEnums = new Map([
-    ['XiContext', ['error', 'warning', 'diagnostic', 'uistring', 'parameter']],
+    ['XiContext', ['error', 'warning', 'diagnostic', 'textstring', 'paramobject']],
     ['UpsilonType', ['text', 'menu']],
-    ['MuType', ['fixit', 'suggestion', 'suppression', 'help', 'doc']],
+    ['MuType', ['fixthis', 'suggest', 'suppress', 'help', 'doc']],
     ['NuBtn', ['none', 'fix', 'resolve', 'apply', 'open', 'suppress', 'disable']],
     ['XiRetvalue', ['false', 'no', 'true', 'yes']],
-    ['XiExclusiveFixIts', ['yes', 'no']],
+    ['XiExFixThese', ['yes', 'no']],
     ['MuOrder', ['block']]
   ]);
 

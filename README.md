@@ -1,6 +1,6 @@
 # RMC XML Language Support
 
-A Visual Studio Code extension that provides comprehensive language support for RMC (Resource Message Catalog) XML files, commonly used in MATLAB/Simulink development environments.
+A Visual Studio Code extension that provides comprehensive language support for RMC (Resource Message Catalog) XML files, commonly used in  Custom development environments.
 
 ## 🚀 Features
 
@@ -75,7 +75,7 @@ code --install-extension rmc-xml-lsp-0.0.1.vsix
         <BetaEntry PsiKey="error_001" XiContext="error">
             <OmegaA RhoHref="model.slx"/>
             <LambdaActions>
-                <DeltaAction MuType="fixit">
+                <DeltaAction MuType="fixthis">
                     <ThetaTxt>Fix this issue</ThetaTxt>
                 </DeltaAction>
             </LambdaActions>
@@ -91,9 +91,9 @@ code --install-extension rmc-xml-lsp-0.0.1.vsix
 | `EtaRsccat` | Root document element | `UpsilonProduct` (required), `TauVersion` |
 | `ZetaMessage` | Message container | - |
 | `BetaEntry` | Individual message entry | `PsiKey` (required), `XiContext` |
-| `OmegaA` | Simulink object link | `RhoHref` (required) |
-| `SigmaDiag` | Diagnostic UI link | `PhiObjparam`, `ChiObjui` (both required) |
-| `LambdaActions` | Action container | `XiExclusiveFixIts` |
+| `OmegaA` | Custom object link | `RhoHref` (required) |
+| `SigmaDiag` | Diagnostic UI link | `PhiObjP`, `ChiObjU` (both required) |
+| `LambdaActions` | Action container | `XiExFixThese` |
 | `DeltaAction` | Specific action | `MuType` (required), `LambdaId` |
 
 ## 🏗️ Architecture
@@ -176,7 +176,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [ ] Code formatting support
 - [ ] Snippet templates
 - [ ] Multi-file project support
-- [ ] Integration with MATLAB/Simulink tools
+- [ ] Integration with  Custom tools
 - [ ] Performance optimizations
 
 ## 🏷️ Changelog
@@ -191,4 +191,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Made with ❤️ for the MATLAB/Simulink community**
+**Made with ❤️ for the  Custom community**

@@ -33,7 +33,7 @@ export class HoverProvider {
         'PhiTranslate': 'Whether this entry should be translated',
         'MuCdata': 'Whether content should be treated as CDATA',
         'NuNote': 'Additional notes for translators',
-        'XiContext': 'Context type: error, warning, diagnostic, uistring, parameter',
+        'XiContext': 'Context type: error, warning, diagnostic, textstring, paramobject',
         'RandomAttr1': 'Optional integer attribute'
       }
     }],
@@ -41,7 +41,7 @@ export class HoverProvider {
       description: 'Action definition for user interactions',
       details: 'Defines an action that can be performed by the user, such as fix-it suggestions or help actions.',
       attributes: {
-        'MuType': 'Action type: fixit, suggestion, suppression, help, doc (required)',
+        'MuType': 'Action type: fixthis, suggest, suppress, help, doc (required)',
         'LambdaId': 'Unique identifier for this action',
         'KappaEnabled': 'Whether this action is enabled',
         'NuBtn': 'Button type: none, fix, resolve, apply, open, suppress, disable',
@@ -49,8 +49,8 @@ export class HoverProvider {
       }
     }],
     ['OmegaA', {
-      description: 'Hyperlink to Simulink objects',
-      details: 'Creates a link to a Simulink object or model element.',
+      description: 'Hyperlink to Custom objects',
+      details: 'Creates a link to a Custom object or model element.',
       attributes: {
         'RhoHref': 'Target reference for the hyperlink (required)',
         'SigmaFileName': 'Associated file name',
@@ -60,19 +60,19 @@ export class HoverProvider {
       }
     }],
     ['SigmaDiag', {
-      description: 'Diagnostic link to Simulink UI',
-      details: 'Creates a link to Simulink UI elements for diagnostic purposes.',
+      description: 'Diagnostic link to Custom UI',
+      details: 'Creates a link to Custom UI elements for diagnostic purposes.',
       attributes: {
-        'PhiObjparam': 'Object parameter reference (required)',
-        'ChiObjui': 'Object UI reference (required)',
-        'PsiObjname': 'Object name for display'
+        'PhiObjP': 'Object paramobject reference (required)',
+        'ChiObjU': 'Object UI reference (required)',
+        'PsiObjN': 'Object name for display'
       }
     }],
     ['LambdaActions', {
       description: 'Container for message actions',
       details: 'Groups related actions that can be performed on a message entry.',
       attributes: {
-        'XiExclusiveFixIts': 'Whether fix-it actions are mutually exclusive',
+        'XiExFixThese': 'Whether fix-it actions are mutually exclusive',
         'KappaEnabled': 'Whether actions are enabled',
         'MuOrder': 'Ordering strategy for actions'
       }
@@ -86,7 +86,7 @@ export class HoverProvider {
       description: 'Advanced action container',
       details: 'Container for complex action definitions with additional features.',
       attributes: {
-        'XiExclusiveFixIts': 'Whether fix-it actions are mutually exclusive',
+        'XiExFixThese': 'Whether fix-it actions are mutually exclusive',
         'KappaEnabled': 'Whether actions are enabled',
         'MuOrder': 'Ordering strategy for actions'
       }
