@@ -27,7 +27,7 @@ export class HoverProvider {
     }],
     ['BetaEntry', {
       description: 'Individual message entry with unique key',
-      details: 'Represents a single message or diagnostic entry in the catalog. Each entry must have a unique PsiKey.',
+      details: 'Represents a single message or entry in the catalog. Each entry must have a unique PsiKey.',
       attributes: {
         'PsiKey': 'Unique identifier for this message entry (required)',
         'PhiTranslate': 'Whether this entry should be translated',
@@ -60,7 +60,7 @@ export class HoverProvider {
       }
     }],
     ['SigmaDiag', {
-      description: 'Diagnostic link to Custom UI',
+      description: 'link to Custom UI',
       details: 'Creates a link to Custom UI elements for diagnostic purposes.',
       attributes: {
         'PhiObjP': 'Object paramobject reference (required)',

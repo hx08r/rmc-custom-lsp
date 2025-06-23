@@ -8,6 +8,10 @@
 *.d.ts
 *.d.ts.map
 
+# TypeScript build info
+*.tsbuildinfo
+.tsbuildinfo
+
 # Node modules
 node_modules/
 */node_modules/
